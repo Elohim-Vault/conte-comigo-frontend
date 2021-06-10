@@ -1,0 +1,37 @@
+ion-content {
+  --background: linear-gradient(to left, #29313c , #485663);
+}
+ion-card {
+  margin-top: 40%;
+}
+
+ion-button {
+  --background: #2cc197;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+ion-card-header {
+  display: flex;
+  justify-content: center;
+}
+
+.input-block {
+  margin-bottom: 20px;
+}
+
+a {
+  text-decoration: none;
+
+}
+
+
+span {
+  color: white;
+}
+
+#signup {
+  display: flex;
+  justify-content: center;
+}
+

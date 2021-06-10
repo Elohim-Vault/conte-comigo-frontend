@@ -1,0 +1,38 @@
+  <ion-content>
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Login</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <div>
+
+          <ion-item lines="full" class="input-block">
+            <ion-label position="floating">
+              <ion-icon name="person-outline"></ion-icon> E-mail
+            </ion-label>
+            <ion-input type="text" [(ngModel)]="user.email" required></ion-input>
+          </ion-item>
+
+          <ion-item lines="full" class="input-block">
+            <ion-label position="floating">
+              <ion-icon name="key-outline"></ion-icon> Senha
+            </ion-label>
+            <ion-input type="password" [(ngModel)]="user.password" required></ion-input>
+          </ion-item>
+        </div>
+
+        <ion-row>
+          <ion-col>
+            <ion-button type="submit"  expand="block" (click)="login()">Entrar</ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-card-content>
+    </ion-card>
+
+    <div id="signup">
+      <span>
+        Você é novo aqui? <a routerLink="/sign-up">Se cadastre</a>
+      </span>
+    </div>
+  </ion-content>
+
