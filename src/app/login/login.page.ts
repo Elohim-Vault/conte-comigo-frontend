@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from "../services/auth.service";
+import { AuthService } from "../services/auth/auth.service";
 import {Router} from "@angular/router";
+
 
 @Component({
   selector: 'app-login',
@@ -18,9 +19,7 @@ export class LoginPage implements OnInit {
   }
 
   login() {
-    this.auth.signIn(this.user).subscribe((response) => {
-      this.auth.setTokenLocal(response['token']);
-      this.auth.setNameLocal(response['user'].name);
+    this.auth.signIn(this.user).then(() => {
       this.router.navigate(['/home']);
     });
   }

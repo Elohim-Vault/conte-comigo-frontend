@@ -1,6 +1,5 @@
 #container {
   text-align: center;
-
   position: absolute;
   left: 0;
   right: 0;
@@ -16,12 +15,80 @@
 #container p {
   font-size: 16px;
   line-height: 22px;
-
   color: #8c8c8c;
-
   margin: 0;
 }
 
 #container a {
   text-decoration: none;
 }
+
+ion-list-header ion-label {
+  color: #a1a5ae;
+  display: flex;
+  justify-content: start;
+}
+
+ion-list  {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+ion-list ion-item{
+  display: flex;
+  justify-content: center;
+}
+
+.price {
+  float: right;
+  width: 50%;
+}
+
+.price ion-label {
+  float: right;
+}
+
+h4 {
+  color: #898d99;
+  margin-top: 1px;
+  padding: 0 0 0 0;
+  font-size: 0.8em;
+}
+
+h3 {
+  font-size: 1em;
+  margin-bottom: 0px;
+  margin-top: 0.5em;
+}
+
+ion-item {
+  --background: #ffffff;
+  --border-style: none;
+  --border-radius: 5px;
+  max-width: 92%;
+  margin-left: 4%;
+  margin-bottom: 0.9em;
+}
+
+ion-content, ion-list {
+  --background: #f5f9fc;
+  background-color: #f5f9fc;
+}
+
+ion-button {
+  max-width: 92%;
+  margin-left: 4%;
+}
+
+#more span{
+  color: #56595e;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#more span a {
+  color: #56595e;
+}
+
+

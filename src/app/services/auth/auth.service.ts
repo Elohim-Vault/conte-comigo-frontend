@@ -1,31 +1,40 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {RequestOptions} from '@angular/http';
-import { environment } from '../../environments/environment';
+import { environment } from '../../../environments/environment';
 import { Storage } from '@capacitor/storage';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+  public name;
+  public token;
   private options;
 
   constructor(private http: HttpClient) {
-
     this.getTokenLocal().then((token) => {
-      this.options = { headers: new HttpHeaders({
-          Authorization: `Bearer ${token}`
-      })};
+      console.log(token);
+      this.token = token;
     });
 
+    this.getNameLocal().then((name) => {
+      this.name = name;
+    });
   }
 
-  signUp(user) {
-    return this.http.post(`${environment.baseUrl}/auth/register`, user);
+  async signUp(user) {
+    this.http.post(`${environment.baseUrl}/auth/register`, user).subscribe((response) => {
+      this.setNameLocal(response['user'].name);
+      this.setTokenLocal(response['token']);
+    });
   }
 
-  signIn(user) {
-    return this.http.post(`${environment.baseUrl}/auth/login`, user);
+  async signIn(user) {
+    this.http.post(`${environment.baseUrl}/auth/login`, user).subscribe((response) => {
+      this.setTokenLocal(response['token']);
+      this.setNameLocal(response['user'].name);
+    });
   }
 
   async signOut() {
@@ -56,9 +65,7 @@ export class AuthService {
     return value;
   }
 
-  getAllGains(){
-    return this.http.get(`${environment.baseUrl}/gains`, this.options);
-  }
+
 }
 
 

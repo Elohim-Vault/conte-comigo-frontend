@@ -1,11 +1,3 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
@@ -14,8 +6,35 @@
   </ion-header>
 
   <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
     <ion-button (click)="signOut()">Sair</ion-button>
+    <div id="transactions">
+      <ion-list>
+        <ion-list-header>
+          <ion-label>Últimas transações</ion-label>
+        </ion-list-header>
+
+        <ion-item *ngFor="let transaction of transactions;">
+          <span>
+            <h3>{{ transaction.description }}</h3>
+            <h4>{{ transaction.receipt_date }}</h4>
+          </span>
+
+          <div class="price">
+            <ion-label *ngIf="transaction.value > 0" color="success">R${{ transaction.value }}</ion-label>
+
+            <ion-label *ngIf="transaction.value < 0" color="danger">R${{ transaction.value }}</ion-label>
+          </div>
+
+        </ion-item>
+
+        <ion-item id="more">
+          <span>
+            <a routerLink="/menu">Mais transações</a>
+          </span>
+        </ion-item>
+      </ion-list>
+    </div>
   </div>
+
+  <app-menu></app-menu>
 </ion-content>

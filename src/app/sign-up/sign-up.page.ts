@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {AuthService} from "../services/auth.service";
-import {Router} from "@angular/router";
+import {AuthService} from '../services/auth/auth.service';
+import {Router} from '@angular/router';
 
 
 
@@ -25,10 +25,7 @@ export class SignUpPage implements OnInit {
   }
 
   public signUp(): void {
-    this.auth.signUp(this.user).subscribe((response) => {
-      console.log(response);
-      this.auth.setNameLocal(response['user'].name);
-      this.auth.setTokenLocal(response['token']);
+    this.auth.signUp(this.user).then((response) => {
       this.router.navigate(['/home']);
     });
   }

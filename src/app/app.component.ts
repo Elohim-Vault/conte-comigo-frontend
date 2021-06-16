@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {AuthService} from './services/auth.service';
+import {AuthService} from './services/auth/auth.service';
 import {Router} from "@angular/router";
 
 @Component({
@@ -14,9 +14,7 @@ export class AppComponent {
 
   initializeApp() {
     this.auth.getTokenLocal().then((token)  => {
-      if(token) {
-        this.router.navigate(['/home']);
-      } else {
+      if(!token) {
         this.router.navigate(['/login']);
       }
     });
