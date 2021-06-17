@@ -1,0 +1,26 @@
+ion-toolbar {
+  color: white;
+  display: flex;
+  --background: linear-gradient(to left, #29313c , #485663);
+}
+
+
+ion-item{
+  position: relative;
+  color: #c4c7ce;
+  font-weight: bold;
+  --background: #f5f9fc;
+  font-size: 18px;
+  width: 80%;
+}
+
+
+ion-content {
+  --background: #f5f9fc;
+  display: flex;
+  justify-content: center;
+}
+
+ion-range::part(pin) {
+  transform: translate3d(0px, -24px, 0px) scale(1);
+}

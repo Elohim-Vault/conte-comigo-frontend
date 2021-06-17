@@ -8,7 +8,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'create-gain',
     pathMatch: 'full'
   },
   {
@@ -22,6 +22,10 @@ const routes: Routes = [
   {
     path: 'menu',
     loadChildren: () => import('./template/menu/menu.module').then( m => m.MenuPageModule)
+  },
+  {
+    path: 'create-gain',
+    loadChildren: () => import('./create-gain/create-gain.module').then( m => m.CreateGainPageModule)
   },
 ];
 
