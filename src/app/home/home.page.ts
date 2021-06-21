@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 
 import {AuthService} from '../services/auth/auth.service';
 import {Router} from '@angular/router';
-import {GainService} from "../services/gain/gain.service";
+import {AccountService} from '../services/account/account.service';
 
 @Component({
   selector: 'app-home',
@@ -12,11 +12,12 @@ import {GainService} from "../services/gain/gain.service";
 export class HomePage implements OnInit{
   private transactions;
 
-  constructor(private auth: AuthService, private router: Router, private gain: GainService) {}
+  constructor(private auth: AuthService, private router: Router, private account: AccountService) {}
 
   ngOnInit() {
-    this.gain.getAll().subscribe((response) => {
-      this.transactions = response['data'].slice(0, 4);
+    this.account.lastTransactions().subscribe((response) => {
+      this.transactions = response;
+      console.log(response);
     });
   }
 

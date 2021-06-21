@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Novo ganho</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item lines="none">
+    <ion-label position="stacked">Descrição</ion-label>
+    <ion-input size="block" [(ngModel)]="gain.description"></ion-input>
+  </ion-item>
+
+  <ion-item lines="none">
+    <ion-label position="stacked">Valor</ion-label>
+    <ion-input size="block" type="number" [(ngModel)]="gain.value"></ion-input>
+
+  </ion-item>
+
+  <ion-item lines="none">
+    <ion-label position="stacked">Data de recorrência</ion-label>
+    <ion-datetime displayFormat="DD/MM/YY" [(ngModel)]="gain.recurrence_date" placeholder="Selecione uma data"></ion-datetime>
+  </ion-item>
+
+  <ion-item lines="none">
+    <ion-label position="stacked">Data de recebimento</ion-label>
+    <ion-datetime displayFormat="DD/MM/YY" [(ngModel)]="gain.receipt_date" placeholder="Selecione uma data"></ion-datetime>
+  </ion-item>
+
+  <ion-row>
+    <ion-col>
+      <ion-button type="submit" (click)="create()">Cadastrar</ion-button>
+    </ion-col>
+  </ion-row>
+</ion-content>

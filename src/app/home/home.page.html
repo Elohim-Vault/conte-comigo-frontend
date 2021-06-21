@@ -16,13 +16,15 @@
         <ion-item *ngFor="let transaction of transactions;">
           <span>
             <h3>{{ transaction.description }}</h3>
-            <h4>{{ transaction.receipt_date }}</h4>
+            <h4>{{ transaction.created_at }}</h4>
           </span>
 
           <div class="price">
-            <ion-label *ngIf="transaction.value > 0" color="success">R${{ transaction.value }}</ion-label>
+            <ion-label *ngIf="transaction.deadline; else gain" color="danger">- R${{ transaction.value }}</ion-label>
+            <ng-template #gain>
+              <ion-label color="success">R${{ transaction.value }}</ion-label>
+            </ng-template>
 
-            <ion-label *ngIf="transaction.value < 0" color="danger">R${{ transaction.value }}</ion-label>
           </div>
 
         </ion-item>

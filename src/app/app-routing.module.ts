@@ -25,7 +25,11 @@ const routes: Routes = [
   },
   {
     path: 'create-gain',
-    loadChildren: () => import('./create-gain/create-gain.module').then( m => m.CreateGainPageModule)
+    loadChildren: () => import('./gains/create-gain/create-gain.module').then(m => m.CreateGainPageModule)
+  },
+  {
+    path: 'create-expense',
+    loadChildren: () => import('./expenses/create-expense/create-expense.module').then( m => m.CreateExpensePageModule)
   },
 ];
 

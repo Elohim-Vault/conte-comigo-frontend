@@ -1,0 +1,47 @@
+ion-toolbar {
+  color: white;
+  display: flex;
+  --background: linear-gradient(to left, #29313c , #485663);
+}
+
+
+ion-header {
+  margin-bottom: 10px;
+}
+
+
+ion-item{
+  position: relative;
+  color: #b2b5bc;
+  font-weight: bold;
+  --background: #f5f9fc;
+  font-size: 18px;
+  width: 80%;
+}
+
+ion-content {
+  --background: #f5f9fc ;
+  display: flex;
+  justify-content: center;
+}
+
+ion-input, ion-datetime {
+  margin: 12px;
+  color: #69696D;
+}
+
+ion-button {
+  margin-top: 30px;
+  width: 90%;
+  height: 105%;
+  --background: #2cc197;
+}
+
+ion-col {
+  display: flex;
+  justify-content: center;
+}
+
+ion-button {
+  text-transform: none;
+}
