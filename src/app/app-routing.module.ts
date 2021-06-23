@@ -8,7 +8,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'create-gain',
+    redirectTo: 'create-goal',
     pathMatch: 'full'
   },
   {
@@ -30,6 +30,10 @@ const routes: Routes = [
   {
     path: 'create-expense',
     loadChildren: () => import('./expenses/create-expense/create-expense.module').then( m => m.CreateExpensePageModule)
+  },
+  {
+    path: 'create-goal',
+    loadChildren: () => import('./goals/create-goal/create-goal.module').then( m => m.CreateGoalPageModule)
   },
 ];
 

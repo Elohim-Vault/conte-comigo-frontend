@@ -24,16 +24,19 @@
             <ng-template #gain>
               <ion-label color="success">R${{ transaction.value }}</ion-label>
             </ng-template>
-
           </div>
-
         </ion-item>
 
-        <ion-item id="more">
+        <ion-spinner  name="dots" *ngIf="showLoader; else more"></ion-spinner>
+
+        <ng-template #more>
+          <ion-item id="more">
           <span>
             <a routerLink="/menu">Mais transações</a>
           </span>
-        </ion-item>
+          </ion-item>
+        </ng-template>
+
       </ion-list>
     </div>
   </div>

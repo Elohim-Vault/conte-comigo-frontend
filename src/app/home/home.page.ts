@@ -10,15 +10,25 @@ import {AccountService} from '../services/account/account.service';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage implements OnInit{
-  private transactions;
+  transactions;
+  showLoader: boolean;
 
   constructor(private auth: AuthService, private router: Router, private account: AccountService) {}
 
   ngOnInit() {
+    this.showProgressBar();
     this.account.lastTransactions().subscribe((response) => {
       this.transactions = response;
-      console.log(response);
+      this.hideProgressBar();
     });
+  }
+
+  public showProgressBar() {
+    this.showLoader = true;
+  }
+
+  public hideProgressBar() {
+    this.showLoader = false;
   }
 
   signOut() {

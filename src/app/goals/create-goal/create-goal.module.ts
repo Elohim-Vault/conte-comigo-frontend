@@ -4,9 +4,9 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { CreateExpensePageRoutingModule } from './create-expense-routing.module';
+import { CreateGoalPageRoutingModule } from './create-goal-routing.module';
 
-import { CreateExpensePage } from './create-expense.page';
+import { CreateGoalPage } from './create-goal.page';
 import {CurrencyMaskModule} from "ng2-currency-mask";
 
 @NgModule({
@@ -14,9 +14,9 @@ import {CurrencyMaskModule} from "ng2-currency-mask";
         CommonModule,
         FormsModule,
         IonicModule,
-        CreateExpensePageRoutingModule,
+        CreateGoalPageRoutingModule,
         CurrencyMaskModule
     ],
-  declarations: [CreateExpensePage]
+  declarations: [CreateGoalPage]
 })
-export class CreateExpensePageModule {}
+export class CreateGoalPageModule {}

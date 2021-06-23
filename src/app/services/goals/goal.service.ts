@@ -6,7 +6,7 @@ import {environment} from "../../../environments/environment";
 @Injectable({
   providedIn: 'root'
 })
-export class ExpenseService {
+export class GoalService {
   private options: { headers: HttpHeaders };
 
   constructor(private http: HttpClient, private auth: AuthService) {
@@ -15,10 +15,7 @@ export class ExpenseService {
       })};
   }
 
-  public getAll() {
-    return this.http.get(`${environment.baseUrl}/expenses`, this.options);
-  }
-  public create(expense) {
-    return this.http.post(`${environment.baseUrl}/expenses`, expense, this.options);
+  public create(goal) {
+    return this.http.post(`${environment.baseUrl}/goals`, goal, this.options);
   }
 }

@@ -35,14 +35,21 @@ ion-content {
   justify-content: center;
 }
 
-ion-input, ion-datetime {
+input, ion-datetime, ion-input {
   margin: 12px;
   color: #69696D;
-}
-
-ion-datetime {
   font-size: 15px;
 }
+
+input {
+  background-color: #f5f9fc;
+  border: none;
+}
+
+input:focus {
+  outline: none;
+}
+
 
 ion-button {
   margin-top: 30px;
@@ -58,4 +65,17 @@ ion-col {
 
 ion-button {
   text-transform: none;
+}
+
+
+#checkRecurrence {
+  font-weight: normal;
+  width: 100%;
+  color: black;
+  font-size: 1rem;
+}
+
+#checkRecurrence ion-checkbox {
+  margin-right: 10px;
+
 }

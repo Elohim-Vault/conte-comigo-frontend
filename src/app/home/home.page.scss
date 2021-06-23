@@ -35,18 +35,9 @@ ion-list  {
   justify-content: center;
 }
 
-ion-list ion-item{
-  display: flex;
-  justify-content: center;
-}
-
 .price {
-  float: right;
-  width: 50%;
-}
-
-.price ion-label {
-  float: right;
+  position: absolute;
+  left: 80%;
 }
 
 h4 {
@@ -91,4 +82,8 @@ ion-button {
   color: #56595e;
 }
 
-
+ion-spinner {
+  margin-left: auto;
+  margin-right: auto;
+  transform: scale(2);
+}

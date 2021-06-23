@@ -9,10 +9,12 @@ import {Router} from "@angular/router";
 })
 export class CreateGainPage implements OnInit {
   value: any;
+  isChecked: any;
+
   gain = {
     description: '',
     value: 0,
-    recurrence_date: null,
+    recurrence_date: '',
     receipt_date: ''
   };
   constructor(private gainService: GainService, private router: Router) { }
@@ -25,5 +27,11 @@ export class CreateGainPage implements OnInit {
     this.gainService.create(this.gain).subscribe(() =>{
       this.router.navigate(['/home']);
     });
+  }
+
+  changeRecurrence() {
+    document.getElementById('recurrenceDate').setAttribute('disabled', String(this.isChecked));
+    this.gain.recurrence_date = '';
+    console.log(this.gain.recurrence_date);
   }
 }

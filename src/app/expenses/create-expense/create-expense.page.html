@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Novo ganho</ion-title>
+    <ion-title>Nova despesa</ion-title>
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/home"></ion-back-button>
     </ion-buttons>
@@ -10,23 +10,29 @@
 <ion-content>
   <ion-item lines="none">
     <ion-label position="stacked">Descrição</ion-label>
-    <ion-input size="block" [(ngModel)]="gain.description"></ion-input>
+    <ion-input size="block" [(ngModel)]="expense.description"></ion-input>
   </ion-item>
 
   <ion-item lines="none">
     <ion-label position="stacked">Valor</ion-label>
-    <ion-input size="block" type="number" [(ngModel)]="gain.value"></ion-input>
+    <input currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',', align: 'left' }" [(ngModel)]="expense.value">
 
   </ion-item>
 
   <ion-item lines="none">
+    <ion-label position="stacked">Data de vencimento</ion-label>
+    <ion-datetime displayFormat="DD/MM/YY" [(ngModel)]="expense.deadline" placeholder="Selecione uma data"></ion-datetime>
+  </ion-item>
+
+
+  <ion-item lines="none" >
     <ion-label position="stacked">Data de recorrência</ion-label>
-    <ion-datetime displayFormat="DD/MM/YY" [(ngModel)]="gain.recurrence_date" placeholder="Selecione uma data"></ion-datetime>
+    <ion-datetime id="recurrenceDate" displayFormat="DD/MM/YY" [(ngModel)]="expense.recurrence_date" placeholder="Selecione uma data"></ion-datetime>
   </ion-item>
 
-  <ion-item lines="none">
-    <ion-label position="stacked">Data de recebimento</ion-label>
-    <ion-datetime displayFormat="DD/MM/YY" [(ngModel)]="gain.receipt_date" placeholder="Selecione uma data"></ion-datetime>
+  <ion-item id="checkRecurrence" lines="none">
+    <ion-label>Esse gasto é recorrente</ion-label>
+    <ion-checkbox slot="start" [(ngModel)]="isChecked" (click)="changeRecurrence()"></ion-checkbox>
   </ion-item>
 
   <ion-row>

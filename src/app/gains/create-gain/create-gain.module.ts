@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { CreateGainPageRoutingModule } from './create-gain-routing.module';
 
 import { CreateGainPage } from './create-gain.page';
+import {CurrencyMaskModule} from "ng2-currency-mask";
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    CreateGainPageRoutingModule
+    CreateGainPageRoutingModule,
+    CurrencyMaskModule
   ],
   declarations: [CreateGainPage]
 })
