@@ -17,7 +17,7 @@ export class AccountService {
   }
 
   lastTransactions() {
-    return this.http.get(`${environment.baseUrl}/accounts/transactions`, this.options);
+    return this.http.get(`${environment.baseUrl}/transactions`, this.options);
   }
 }
 
