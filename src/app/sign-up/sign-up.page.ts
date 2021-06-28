@@ -25,8 +25,11 @@ export class SignUpPage implements OnInit {
   }
 
   public signUp(): void {
-    this.auth.signUp(this.user).then((response) => {
-      this.router.navigate(['/home']);
-    });
+    this.auth.signUp(this.user).subscribe(
+      response => {
+        this.auth.setNameLocal(response['user'].name);
+        this.auth.setTokenLocal(response['token']);
+        this.router.navigate(['/home']);
+      }, error => console.log(error));
   }
 }

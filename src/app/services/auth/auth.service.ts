@@ -1,8 +1,8 @@
-import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {RequestOptions} from '@angular/http';
-import { environment } from '../../../environments/environment';
-import { Storage } from '@capacitor/storage';
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {environment} from '../../../environments/environment';
+import {Storage} from '@capacitor/storage';
+import {BehaviorSubject} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -23,18 +23,14 @@ export class AuthService {
     });
   }
 
-  async signUp(user) {
-    this.http.post(`${environment.baseUrl}/auth/register`, user).subscribe((response) => {
-      this.setNameLocal(response['user'].name);
-      this.setTokenLocal(response['token']);
-    });
+
+
+  signUp(user) {
+    return this.http.post(`${environment.baseUrl}/auth/register`, user);
   }
 
-  async signIn(user) {
-    this.http.post(`${environment.baseUrl}/auth/login`, user).subscribe((response) => {
-      this.setTokenLocal(response['token']);
-      this.setNameLocal(response['user'].name);
-    });
+  signIn(user) {
+    return this.http.post(`${environment.baseUrl}/auth/login`, user);
   }
 
   async signOut() {
@@ -60,9 +56,8 @@ export class AuthService {
     });
   }
 
-  async getTokenLocal() {
-    const {value} = await Storage.get({key: 'token'});
-    return value;
+  getTokenLocal() {
+    return Storage.get({key: 'token'});
   }
 
 

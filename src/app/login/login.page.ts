@@ -19,8 +19,14 @@ export class LoginPage implements OnInit {
   }
 
   login() {
-    this.auth.signIn(this.user).then(() => {
-      this.router.navigate(['/home']);
-    });
+    this.auth.signIn(this.user).subscribe(
+      response => {
+        this.auth.setTokenLocal(response['token']);
+        this.auth.setNameLocal(response['user'].name);
+        this.router.navigate(['/home']);
+      },
+      error => console.log(error)
+    );
+
   }
 }
