@@ -2,7 +2,6 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../../environments/environment';
 import {Storage} from '@capacitor/storage';
-import {BehaviorSubject} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -14,16 +13,14 @@ export class AuthService {
 
   constructor(private http: HttpClient) {
     this.getTokenLocal().then((token) => {
-      console.log(token);
-      this.token = token;
+      console.log(token.value);
+      this.token = token.value;
     });
 
     this.getNameLocal().then((name) => {
       this.name = name;
     });
   }
-
-
 
   signUp(user) {
     return this.http.post(`${environment.baseUrl}/auth/register`, user);
@@ -34,7 +31,7 @@ export class AuthService {
   }
 
   async signOut() {
-    await Storage.remove({key: 'token'});
+     await Storage.remove({key: 'token'});
   }
 
   async setNameLocal(name) {
