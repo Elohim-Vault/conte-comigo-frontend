@@ -1,15 +1,15 @@
 <div id="top-bar">
   <div id="header">
     <ion-label>Saldo na sua conta</ion-label>
-    <ion-title>R$ 10.800</ion-title>
+    <ion-title>R$ {{ this.account.value }}</ion-title>
   </div>
 
   <ion-card>
     <ion-card-content>
-      <ion-card-title>Macbook Pro</ion-card-title>
-      <ion-progress-bar value="0.5"></ion-progress-bar>
+      <ion-card-title>{{ this.goal.description }}</ion-card-title>
+      <ion-progress-bar value="{{ this.goal.current_value / this.goal.value}}"></ion-progress-bar>
       <span>
-          <h3>R$ 60 de R$ 120 </h3> <h3 id="price">50% completo</h3>
+          <h3>R$ {{ this.goal.current_value }} de R$ {{ this.goal.value }} </h3> <h3 id="price">{{ (this.goal.current_value * 100) / this.goal.value}}% completo</h3>
       </span>
     </ion-card-content>
   </ion-card>

@@ -18,4 +18,8 @@ export class GoalService {
   public create(goal) {
     return this.http.post(`${environment.baseUrl}/goals`, goal, this.options);
   }
+
+  get() {
+    return this.http.get(`${environment.baseUrl}/goals`, this.options);
+  }
 }

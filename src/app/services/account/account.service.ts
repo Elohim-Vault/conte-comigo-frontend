@@ -8,6 +8,7 @@ import {environment} from "../../../environments/environment";
 })
 export class AccountService {
   private options;
+
   constructor(private http: HttpClient, private auth: AuthService) {
     this.options = {
       headers: new HttpHeaders({
@@ -18,6 +19,10 @@ export class AccountService {
 
   lastTransactions() {
     return this.http.get(`${environment.baseUrl}/transactions`, this.options);
+  }
+
+  userAccount() {
+    return this.http.get(`${environment.baseUrl}/accounts`, this.options);
   }
 }
 
