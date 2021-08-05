@@ -12,6 +12,7 @@ import {MenuComponent} from "./template/menu/menu.component";
 
 
 
+
 @NgModule({
   declarations: [AppComponent, MenuComponent],
   entryComponents: [],

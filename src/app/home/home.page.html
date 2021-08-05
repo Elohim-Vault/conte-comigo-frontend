@@ -9,20 +9,21 @@
           <ion-label>Últimas transações</ion-label>
         </ion-list-header>
 
-        <ion-item *ngFor="let transaction of transactions;">
-          <span>
-            <h3>{{ transaction.description }}</h3>
-            <h4>{{ transaction.created_at }}</h4>
-          </span>
+        <div *ngIf="transactions">
+          <ion-item *ngFor="let transaction of transactions">
+            <span>
+              <h3>{{ transaction.description }}</h3>
+              <h4>{{ transaction.created_at }}</h4>
+            </span>
 
-          <div class="price">
-            <ion-label *ngIf="transaction.deadline; else gain" color="danger">- R${{ transaction.value }}</ion-label>
-            <ng-template #gain>
-              <ion-label color="success">R${{ transaction.value }}</ion-label>
-            </ng-template>
-          </div>
-        </ion-item>
-
+            <div class="price">
+              <ion-label *ngIf="transaction.value < 0; else gain" color="danger">- R${{ transaction.value * - 1}}</ion-label>
+              <ng-template #gain>
+                <ion-label color="success">R${{ transaction.value }}</ion-label>
+              </ng-template>
+            </div>
+          </ion-item>
+        </div>
         <ion-spinner  name="dots" *ngIf="showLoader; else more"></ion-spinner>
 
         <ng-template #more>

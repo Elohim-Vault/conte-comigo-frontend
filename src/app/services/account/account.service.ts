@@ -17,9 +17,9 @@ export class AccountService {
     };
   }
 
-  lastTransactions() {
-    return this.http.get(`${environment.baseUrl}/transactions`, this.options);
-  }
+  // lastTransactions() {
+  //   return this.http.get(`${environment.baseUrl}/transactions?quantity=5`, this.options);
+  // }
 
   userAccount() {
     return this.http.get(`${environment.baseUrl}/accounts`, this.options);

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {GainService} from "../../services/gain/gain.service";
 import {Router} from "@angular/router";
+import {TransactionService} from "../../services/transactions/transaction.service";
 
 @Component({
   selector: 'app-create-gain',
@@ -15,16 +15,15 @@ export class CreateGainPage implements OnInit {
     description: '',
     value: 0,
     recurrence_date: '',
-    receipt_date: ''
   };
-  constructor(private gainService: GainService, private router: Router) { }
+  constructor(private transactionService: TransactionService, private router: Router) { }
 
   ngOnInit() {
   }
 
   async create() {
     console.log(this.gain);
-    this.gainService.create(this.gain).subscribe(() =>{
+    this.transactionService.create(this.gain).subscribe(() =>{
       this.router.navigate(['/home']);
     });
   }

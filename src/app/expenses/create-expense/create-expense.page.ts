@@ -1,6 +1,6 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
-import {ExpenseService} from "../../services/expense/expense.service";
 import {Router} from "@angular/router";
+import {TransactionService} from "../../services/transactions/transaction.service";
 
 @Component({
   selector: 'app-create-expense',
@@ -14,13 +14,11 @@ export class CreateExpensePage implements OnInit {
     description: '',
     recurrence_date: '',
     value: 0,
-    deadline: Date,
     account: 'Sua conta',
-
     status: false
   };
 
-  constructor(private expenseService: ExpenseService, private router: Router) {
+  constructor(private transactionService: TransactionService, private router: Router) {
     this.isChecked = true;
   }
 
@@ -35,8 +33,8 @@ export class CreateExpensePage implements OnInit {
   }
 
   async create() {
-    console.log(this.expense);
-    this.expenseService.create(this.expense).subscribe(() => {
+    this.expense.value *= -1;
+    this.transactionService.create(this.expense).subscribe(() => {
       this.router.navigate(['/home']);
     });
   }

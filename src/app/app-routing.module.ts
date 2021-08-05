@@ -30,7 +30,15 @@ const routes: Routes = [
   {
     path: 'create-goal',
     loadChildren: () => import('./goals/create-goal/create-goal.module').then( m => m.CreateGoalPageModule)
+  },  {
+    path: 'statistics',
+    loadChildren: () => import('./statistics/statistics.module').then( m => m.StatisticsPageModule)
   },
+  {
+    path: 'transactions',
+    loadChildren: () => import('./transactions/transactions.module').then( m => m.TransactionsPageModule)
+  },
+
 ];
 
 @NgModule({

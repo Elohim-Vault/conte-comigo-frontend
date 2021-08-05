@@ -34,20 +34,19 @@ export class AuthService {
      await Storage.remove({key: 'token'});
   }
 
-  async setNameLocal(name) {
-   await Storage.set({
+  setNameLocal(name) {
+   Storage.set({
      key: 'name',
      value: name
    });
   }
 
-  async getNameLocal() {
-    const {value} = await Storage.get({key: 'name'});
-    return value;
+  getNameLocal() {
+    return Storage.get({key: 'name'});
   }
 
-  async setTokenLocal(token) {
-    await Storage.set({
+  setTokenLocal(token) {
+    Storage.set({
       key: 'token',
       value: token
     });
@@ -56,8 +55,6 @@ export class AuthService {
   getTokenLocal() {
     return Storage.get({key: 'token'});
   }
-
-
 }
 
 

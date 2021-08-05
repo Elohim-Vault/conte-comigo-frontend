@@ -19,12 +19,6 @@
 
   </ion-item>
 
-
-  <ion-item lines="none">
-    <ion-label position="stacked">Data de recebimento</ion-label>
-    <ion-datetime  displayFormat="DD/MM/YY" [(ngModel)]="gain.receipt_date" placeholder="Selecione uma data"></ion-datetime>
-  </ion-item>
-
   <ion-item lines="none">
     <ion-label position="stacked">Data de recorrência</ion-label>
     <ion-datetime id="recurrenceDate" displayFormat="DD/MM/YY" [(ngModel)]="gain.recurrence_date" placeholder="Selecione uma data"></ion-datetime>
@@ -32,7 +26,7 @@
 
 
   <ion-item id="checkRecurrence" lines="none">
-    <ion-label>Esse gasto é recorrente</ion-label>
+    <ion-label>Esse ganho é recorrente</ion-label>
     <ion-checkbox slot="start" [(ngModel)]="isChecked" (click)="changeRecurrence()"></ion-checkbox>
   </ion-item>
 
