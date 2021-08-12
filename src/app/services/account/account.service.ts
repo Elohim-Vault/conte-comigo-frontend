@@ -21,8 +21,12 @@ export class AccountService {
     return this.http.get(`${environment.baseUrl}/accounts`, this.options);
   }
 
-  financialData() {
-    return this.http.get(`${environment.baseUrl}/accounts/financial`, this.options);
+  financialData(month?: string) {
+    if (month === undefined) {
+      const actualMonth = new Date().getMonth();
+      month = `${actualMonth + 1}`;
+    }
+    return this.http.get(`${environment.baseUrl}/accounts/financial?month=${month}`, this.options);
   }
 }
 

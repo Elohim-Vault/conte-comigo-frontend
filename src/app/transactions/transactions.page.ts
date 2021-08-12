@@ -1,7 +1,8 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
-import Chart from "chart.js/auto";
-import {TransactionService} from "../services/transactions/transaction.service";
-import {AccountService} from "../services/account/account.service";
+import Chart from 'chart.js/auto';
+import {TransactionService} from '../services/transactions/transaction.service';
+import {AccountService} from '../services/account/account.service';
+import {IonInfiniteScroll} from '@ionic/angular';
 
 @Component({
   selector: 'app-transactions',
@@ -9,43 +10,49 @@ import {AccountService} from "../services/account/account.service";
   styleUrls: ['./transactions.page.scss'],
 })
 export class TransactionsPage implements OnInit {
+  @ViewChild(IonInfiniteScroll) public infinite: IonInfiniteScroll;
   @ViewChild('transactionsChartCanvas') private transactionCanvas: ElementRef;
   transactionsData: Array<any> = [];
+  monthName = [
+    'janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho',
+    'agosto', 'setembro', 'outubro', 'novembro', 'dezembro'
+  ];
   pageNumber = 1;
-
+  month: string;
   transactionChart;
-  month;
   constructor(private transactionService: TransactionService, private accountService: AccountService) {}
 
   ngOnInit() {
-    this.getTransactions(false, '');
+    this.infiniteTransaction();
     const monthNumber = new Date().getMonth() + 1;
     this.month = `${monthNumber}`;
   }
 
   ionViewDidEnter() {
-    this.showTransactionChart();
+    this.showTransactionChart(this.month);
   }
 
-  getMonth(month) {
-
+  alterMonth(month) {
+    this.transactionsData = [];
+    this.pageNumber = 1;
+    this.infinite.disabled = false;
+    this.transactionChart.destroy();
+    this.infiniteTransaction();
+    this.showTransactionChart(this.month);
   }
 
-  getTransactions(isFirstLoad, event) {
+  infiniteTransaction(isFirstLoad = false, event?) {
     this.transactionService.get(7, this.pageNumber, this.month)
       .subscribe((response: any) => {
-        console.log(response);
-        response['data'].forEach((item) => {
+        response.data.forEach((item) => {
           this.transactionsData.push(item);
         });
-
         if (response.next_page_url == null) {
-          event.target.disabled = true;
+          this.infinite.disabled = true;
         }
         if (isFirstLoad) {
-          event.target.complete();
+          this.infinite.complete();
         }
-
         this.pageNumber++;
       }, error => {
         console.log(error);
@@ -53,17 +60,17 @@ export class TransactionsPage implements OnInit {
   }
 
   doInfinite(event) {
-    this.getTransactions(true, event);
+    this.infiniteTransaction(true, event);
   }
 
-  showTransactionChart() {
-    this.accountService.financialData().subscribe((response) => {
+  showTransactionChart(month) {
+    this.accountService.financialData(month).subscribe((response) => {
       this.transactionChart = new Chart(this.transactionCanvas.nativeElement, {
         type: 'bar',
         data: {
           labels: ['ganhos', 'despesas', 'poupado'],
           datasets: [{
-            label: `Valores do mês de agosto`,
+            label: `Valores do mês de ${this.monthName[Number(this.month) - 1]}`,
             data: [response['gains'], response['expenses'] * - 1, response['savings']],
             backgroundColor: [
               'rgba(255, 99, 132, 0.2)',

@@ -1,6 +1,34 @@
-ion-header {
-
+ion-toolbar {
+  height: 42px;
+  --ion-background-color: #E3E7EA;
+  ion-item {
+    --ion-item-background: #E3E7EA;
+    --ripple-color: transparent;
+    --background-activated: transparent;
+    --background-activated-opacity:transparent;
+    --background-focused: transparent;
+    --background-focused-opacity:transparent;
+    --background-hover  : transparent;
+    --background-hover-opacity  :transparent;
+  }
 }
+
+ion-header {
+  display: flex;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+
+ion-select {
+  color: black;
+  font-size: 20px;
+  position: relative;
+  margin: auto;
+}
+
 
 
 #container a {
