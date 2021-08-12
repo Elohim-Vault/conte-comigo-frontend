@@ -17,7 +17,7 @@ export class HomePage implements OnInit{
 
   ngOnInit() {
     this.showProgressBar();
-    this.transactionService.get(5).subscribe((response) => {
+    this.transactionService.get(3, 1).subscribe((response) => {
       this.transactions = response['data'];
       this.hideProgressBar();
     });
@@ -33,7 +33,7 @@ export class HomePage implements OnInit{
 
   signOut() {
     this.auth.signOut().then(() => {
-
+      this.router.navigateByUrl('/login');
     });
   }
 }

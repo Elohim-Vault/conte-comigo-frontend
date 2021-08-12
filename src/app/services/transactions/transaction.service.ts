@@ -14,8 +14,12 @@ export class TransactionService {
     })};
   }
 
-  public get(quantity: number) {
-    return this.http.get(`${environment.baseUrl}/transactions?quantity=${quantity}`, this.options);
+  public get(quantity: number, page: number, month?: string) {
+    if (month === undefined) {
+      const actualMonth = new Date().getMonth();
+      month = `${actualMonth + 1}`;
+    }
+    return this.http.get(`${environment.baseUrl}/transactions?quantity=${quantity}&page=${page}&month=${month}`, this.options);
   }
 
   public create(transaction) {
