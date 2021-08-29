@@ -19,7 +19,7 @@ export class GoalService {
     return this.http.post(`${environment.baseUrl}/goals`, goal, this.options);
   }
 
-  get() {
-    return this.http.get(`${environment.baseUrl}/goals`, this.options);
+  get(quantity) {
+    return this.http.get(`${environment.baseUrl}/goals?quantity=${quantity}`, this.options);
   }
 }

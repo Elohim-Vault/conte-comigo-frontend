@@ -19,7 +19,7 @@ export class TopBarComponent implements OnInit {
       console.log(this.account);
     });
 
-    this.goalService.get().subscribe((response) => {
+    this.goalService.get(1).subscribe((response) => {
       response = response['data'];
       this.goal = response[Object.keys(response).length - 1];
     });

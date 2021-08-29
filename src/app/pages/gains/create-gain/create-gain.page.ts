@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
-import {TransactionService} from "../../services/transactions/transaction.service";
+import {TransactionService} from "../../../services/transactions/transaction.service";
 
 @Component({
   selector: 'app-create-gain',

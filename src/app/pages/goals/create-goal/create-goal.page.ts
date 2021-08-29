@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {GoalService} from "../../services/goals/goal.service";
+import {GoalService} from "../../../services/goals/goal.service";
 import {Router} from "@angular/router";
 
 @Component({

@@ -4,7 +4,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: 'home',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
+    loadChildren: () => import('./pages/home/home.module').then(m => m.HomePageModule)
   },
   {
     path: '',
@@ -13,7 +13,7 @@ const routes: Routes = [
   },
   {
     path: 'login',
-    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+    loadChildren: () => import('./pages/login/login.module').then(m => m.LoginPageModule)
   },
   {
     path: 'sign-up',
@@ -21,22 +21,27 @@ const routes: Routes = [
   },
   {
     path: 'create-gain',
-    loadChildren: () => import('./gains/create-gain/create-gain.module').then(m => m.CreateGainPageModule)
+    loadChildren: () => import('./pages/gains/create-gain/create-gain.module').then(m => m.CreateGainPageModule)
   },
   {
     path: 'create-expense',
-    loadChildren: () => import('./expenses/create-expense/create-expense.module').then( m => m.CreateExpensePageModule)
+    loadChildren: () => import('./pages/expenses/create-expense/create-expense.module').then(m => m.CreateExpensePageModule)
   },
   {
     path: 'create-goal',
-    loadChildren: () => import('./goals/create-goal/create-goal.module').then( m => m.CreateGoalPageModule)
-  },  {
+    loadChildren: () => import('./pages/goals/create-goal/create-goal.module').then(m => m.CreateGoalPageModule)
+  },
+  {
     path: 'statistics',
     loadChildren: () => import('./statistics/statistics.module').then( m => m.StatisticsPageModule)
   },
   {
     path: 'transactions',
     loadChildren: () => import('./transactions/transactions.module').then( m => m.TransactionsPageModule)
+  },
+  {
+    path: 'goals',
+    loadChildren: () => import('./pages/goals/goals/goals.module').then(m => m.GoalsPageModule)
   },
 
 ];
