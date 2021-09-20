@@ -30,8 +30,8 @@ export class AuthService {
     return this.http.post(`${environment.baseUrl}/auth/login`, user);
   }
 
-  async signOut() {
-     await Storage.remove({key: 'token'});
+  signOut() {
+    return Storage.remove({key: 'token'});
   }
 
   setNameLocal(name) {
@@ -46,7 +46,7 @@ export class AuthService {
   }
 
   setTokenLocal(token) {
-    Storage.set({
+    return Storage.set({
       key: 'token',
       value: token
     });

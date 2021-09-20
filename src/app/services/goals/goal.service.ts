@@ -15,11 +15,17 @@ export class GoalService {
       })};
   }
 
-  public create(goal) {
+  create(goal) {
     return this.http.post(`${environment.baseUrl}/goals`, goal, this.options);
   }
 
   get(quantity) {
     return this.http.get(`${environment.baseUrl}/goals?quantity=${quantity}`, this.options);
   }
+
+  changeStatus(goal) {
+    return this.http.put(`${environment.baseUrl}/goals/${goal.id}`, this.options);
+  }
 }
+
+

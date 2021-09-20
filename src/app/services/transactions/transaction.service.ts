@@ -7,7 +7,7 @@ import {environment} from "../../../environments/environment";
   providedIn: 'root'
 })
 export class TransactionService {
-  private options;
+  private readonly options;
   constructor(private http: HttpClient, private auth: AuthService) {
     this.options = { headers: new HttpHeaders({
         Authorization: `Bearer ${this.auth.token}`

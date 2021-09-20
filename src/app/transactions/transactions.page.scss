@@ -1,16 +1,7 @@
 ion-toolbar {
   height: 42px;
   --ion-background-color: #E3E7EA;
-  ion-item {
-    --ion-item-background: #E3E7EA;
-    --ripple-color: transparent;
-    --background-activated: transparent;
-    --background-activated-opacity:transparent;
-    --background-focused: transparent;
-    --background-focused-opacity:transparent;
-    --background-hover  : transparent;
-    --background-hover-opacity  :transparent;
-  }
+
 }
 
 ion-header {
@@ -29,8 +20,9 @@ ion-select {
   margin: auto;
 }
 
-
-
+ion-select-option {
+  --color: red;
+}
 #container a {
   text-decoration: none;
 }

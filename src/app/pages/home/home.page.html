@@ -8,8 +8,8 @@
         <ion-list-header>
           <ion-label>Últimas transações</ion-label>
         </ion-list-header>
-
-        <div *ngIf="transactions">
+        <ion-spinner  name="dots" *ngIf="showLoader; else more"></ion-spinner>
+        <div *ngIf="transactions?.length; else emptyTransactions">
           <ion-item *ngFor="let transaction of transactions">
             <span>
               <h3>{{ transaction.description }}</h3>
@@ -23,15 +23,18 @@
               </ng-template>
             </div>
           </ion-item>
-        </div>
-        <ion-spinner  name="dots" *ngIf="showLoader; else more"></ion-spinner>
 
-        <ng-template #more>
-          <ion-item id="more">
+          <ng-template #more>
+            <ion-item id="more">
           <span>
             <a href="\transactions">Mais transações</a>
           </span>
-          </ion-item>
+            </ion-item>
+          </ng-template>
+        </div>
+
+        <ng-template #emptyTransactions>
+          <h3>Você ainda não possui nenhuma transação</h3>
         </ng-template>
 
       </ion-list>

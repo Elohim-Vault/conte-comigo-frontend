@@ -1,0 +1,40 @@
+ion-progress-bar {
+  min-width: 15%;
+  --progress-background: #2cc197;
+  --background: #dbe6f0;
+  white-space: nowrap;
+  overflow: hidden;
+  padding: 6px;
+  border-radius: 20px;
+}
+
+ion-card {
+  width: 100%;
+}
+
+ion-card-title {
+  font-size:16px;
+  margin-bottom: 10px;
+}
+
+
+h3 {
+  color: #a3a4aa;
+  font-size: 13px;
+  margin-top: 8px;
+  font-weight: bolder;
+}
+
+ion-card-content {
+  margin-left: 5px;
+}
+
+ion-card span {
+  display: inline-flex;
+  width: 100%;
+}
+
+#price {
+  position: absolute;
+  right: 5%;
+}
