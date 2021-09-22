@@ -1,0 +1,54 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="tertiary">
+    <ion-item color="tertiary">
+      <ion-select [(ngModel)]="month" (ionChange)="alterMonth(month);" okText="OK" cancelText="Cancelar">
+        <ion-select-option value=1>Janeiro</ion-select-option>
+        <ion-select-option value=2>Fevereiro</ion-select-option>
+        <ion-select-option value=3>Março</ion-select-option>
+        <ion-select-option value=4>Abril</ion-select-option>
+        <ion-select-option value=5>Maio</ion-select-option>
+        <ion-select-option value=6>Junho</ion-select-option>
+        <ion-select-option value=7>Julho</ion-select-option>
+        <ion-select-option value=8>Agosto</ion-select-option>
+        <ion-select-option value=9>Setembro</ion-select-option>
+        <ion-select-option value=10>Outubro</ion-select-option>
+        <ion-select-option value=11>Novembro</ion-select-option>
+        <ion-select-option value=12>Dezembro</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+
+  <ion-card>
+    <ion-card-header>
+      Balanço mensal
+    </ion-card-header>
+    <ion-card-content>
+      <canvas #transactionsChartCanvas style="position: relative;"></canvas>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-list>
+      <ion-item *ngFor="let transaction of transactionsData">
+            <span>
+              <h3>{{ transaction.description }}</h3>
+              <h4>{{ transaction.created_at }}</h4>
+            </span>
+
+        <div class="price">
+          <ion-label *ngIf="transaction.value < 0; else gain" color="danger">- R${{ transaction.value * - 1}}</ion-label>
+          <ng-template #gain>
+            <ion-label color="success">R${{ transaction.value }}</ion-label>
+          </ng-template>
+        </div>
+      </ion-item>
+  </ion-list>
+
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Carregando mais transações">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+</ion-content>
