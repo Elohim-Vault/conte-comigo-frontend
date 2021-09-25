@@ -8,7 +8,7 @@
   <ion-list>
     <ion-item-sliding *ngFor="let goal of goalData">
       <ion-item>
-        <ion-card>
+        <ion-card (click)="presentModal(this.goal)">
           <ion-card-content>
             <ion-card-title>{{ this.goal.description }}</ion-card-title>
             <ion-progress-bar value="{{ this.goal.current_value / this.goal.value}}"></ion-progress-bar>

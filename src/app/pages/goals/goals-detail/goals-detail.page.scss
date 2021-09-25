@@ -1,0 +1,61 @@
+ion-progress-bar {
+  --progress-background: #2cc197;
+  --background: #dbe6f0;
+  white-space: nowrap;
+  overflow: hidden;
+  padding: 6px;
+  border-radius: 20px;
+  margin: 0 auto 0 auto;
+  width: 90%;
+}
+
+ion-item{
+  position: relative;
+  color: #b2b5bc;
+  font-weight: bold;
+  --background: #f5f9fc;
+  font-size: 18px;
+  width: 100%;
+}
+ion-content {
+  --background: #f5f9fc ;
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+}
+
+input, ion-input {
+  margin: 12px;
+  color: #69696D;
+  font-size: 15px;
+}
+
+input {
+  background-color: #f5f9fc;
+  border: none;
+}
+
+input:focus {
+  outline: none;
+}
+
+ion-button {
+  margin-top: 30px;
+  width: 90%;
+  height: 105%;
+  --background: #2cc197;
+}
+
+ion-button {
+  text-transform: none;
+}
+
+#header {
+  text-align: center;
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+
+#header ion-title {
+  font-size: 14px;
+}

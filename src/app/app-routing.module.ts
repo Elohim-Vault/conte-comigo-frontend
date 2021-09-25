@@ -42,7 +42,11 @@ const routes: Routes = [
   {
     path: 'goals',
     loadChildren: () => import('./pages/goals/goals/goals.module').then(m => m.GoalsPageModule)
+  },  {
+    path: 'goals-detail',
+    loadChildren: () => import('./pages/goals/goals-detail/goals-detail.module').then( m => m.GoalsDetailPageModule)
   },
+
 
 ];
 

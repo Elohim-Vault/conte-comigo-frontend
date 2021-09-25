@@ -1,0 +1,16 @@
+<ion-content>
+  <div id="header">
+    <ion-label>Saldo na sua conta</ion-label>
+    <ion-title>R$ {{ this.account.value - this.newValue.value}}</ion-title>
+  </div>
+  <ion-progress-bar value="{{ (this.currentValue + this.newValue.value) / 100}}"></ion-progress-bar>
+  <ion-item lines="none">
+    <ion-label position="stacked">Valor</ion-label>
+    <input currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',', align: 'left' }" [formControl]="newValue">
+  </ion-item>
+  <ion-row>
+    <ion-col>
+      <ion-button type="submit" (click)="create()">Cadastrar</ion-button>
+    </ion-col>
+  </ion-row>
+</ion-content>
