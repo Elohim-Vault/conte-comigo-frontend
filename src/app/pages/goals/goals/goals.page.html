@@ -13,9 +13,9 @@
             <ion-card-title>{{ this.goal.description }}</ion-card-title>
             <ion-progress-bar value="{{ this.goal.current_value / this.goal.value}}"></ion-progress-bar>
             <span>
-            <h3>R$ {{ this.goal.current_value }} de R$ {{ this.goal.value }} </h3>
-            <h3 id="price">{{ (this.goal.current_value * 100) / this.goal.value}}% completo</h3>
-          </span>
+              <h3>R$ {{ this.goal.current_value }} de R$ {{ this.goal.value }} </h3>
+              <h3 id="price">{{ (this.goal.current_value * 100) / this.goal.value}}% completo</h3>
+            </span>
           </ion-card-content>
         </ion-card>
       </ion-item>

@@ -23,8 +23,8 @@ export class GoalService {
     return this.http.get(`${environment.baseUrl}/goals?quantity=${quantity}`, this.options);
   }
 
-  changeStatus(goal) {
-    return this.http.put(`${environment.baseUrl}/goals/${goal.id}`, this.options);
+  update(goal) {
+    return this.http.put(`${environment.baseUrl}/goals/${goal.id}`, goal, this.options);
   }
 }
 

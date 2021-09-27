@@ -24,6 +24,7 @@ export class GoalsPage implements OnInit {
       component: GoalsDetailPage,
       cssClass: 'goals-detail',
       componentProps: {
+        id: goal.id,
         currentValue: goal.current_value,
         value: goal.value
       }
