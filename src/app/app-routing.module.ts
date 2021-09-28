@@ -17,7 +17,7 @@ const routes: Routes = [
   },
   {
     path: 'sign-up',
-    loadChildren: () => import('./sign-up/sign-up.module').then( m => m.SignUpPageModule)
+    loadChildren: () => import('./pages/sign-up/sign-up.module').then(m => m.SignUpPageModule)
   },
   {
     path: 'create-gain',
@@ -37,12 +37,13 @@ const routes: Routes = [
   },
   {
     path: 'transactions',
-    loadChildren: () => import('./transactions/transactions.module').then( m => m.TransactionsPageModule)
+    loadChildren: () => import('./pages/transactions/transactions.module').then(m => m.TransactionsPageModule)
   },
   {
     path: 'goals',
     loadChildren: () => import('./pages/goals/goals/goals.module').then(m => m.GoalsPageModule)
-  },  {
+  },
+  {
     path: 'goals-detail',
     loadChildren: () => import('./pages/goals/goals-detail/goals-detail.module').then( m => m.GoalsDetailPageModule)
   },

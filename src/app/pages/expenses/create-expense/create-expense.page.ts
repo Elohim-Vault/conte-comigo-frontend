@@ -27,7 +27,6 @@ export class CreateExpensePage implements OnInit {
   }
 
   public changeRecurrence() {
-    console.log(this.isChecked);
     document.getElementById('recurrenceDate').setAttribute('disabled', String(this.isChecked));
     this.expense.recurrence_date = '';
   }

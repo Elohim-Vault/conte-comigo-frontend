@@ -9,20 +9,21 @@ import {TransactionService} from "../../../services/transactions/transaction.ser
 })
 export class CreateGainPage implements OnInit {
   value: any;
-  isChecked: any;
+  isChecked: boolean;
 
   gain = {
     description: '',
     value: 0,
     recurrence_date: '',
   };
-  constructor(private transactionService: TransactionService, private router: Router) { }
+  constructor(private transactionService: TransactionService, private router: Router) {
+    this.isChecked = true;
+  }
 
   ngOnInit() {
   }
 
-  async create() {
-    console.log(this.gain);
+  create() {
     this.transactionService.create(this.gain).subscribe(() =>{
       this.router.navigate(['/home']);
     });
@@ -31,6 +32,5 @@ export class CreateGainPage implements OnInit {
   changeRecurrence() {
     document.getElementById('recurrenceDate').setAttribute('disabled', String(this.isChecked));
     this.gain.recurrence_date = '';
-    console.log(this.gain.recurrence_date);
   }
 }
