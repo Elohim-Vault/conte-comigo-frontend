@@ -17,6 +17,10 @@ export class AccountService {
     };
   }
 
+  update(account) {
+    return this.http.put(`${environment.baseUrl}/accounts/${account.id}`, account, this.options);
+  }
+
   userAccount() {
     return this.http.get(`${environment.baseUrl}/accounts`, this.options);
   }
@@ -28,6 +32,8 @@ export class AccountService {
     }
     return this.http.get(`${environment.baseUrl}/accounts/financial?month=${month}`, this.options);
   }
+
+
 }
 
 

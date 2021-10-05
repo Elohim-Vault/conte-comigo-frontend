@@ -2,15 +2,9 @@ ion-card {
   margin-top: 15%;
 }
 
-ion-content {
+ion-content, ion-toolbar, ion-header {
   --background: linear-gradient(to left, #29313c , #485663);
 }
-
-ion-toolbar {
-  --background: linear-gradient(to left, #29313c , #485663);
-}
-
-
 
 ion-button {
   --background: #2cc197;
@@ -29,4 +23,8 @@ ion-card-header {
 
 a {
   text-decoration: none;
+}
+
+ion-back-button {
+  color: white;
 }

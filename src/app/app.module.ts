@@ -16,8 +16,11 @@ import {MenuComponent} from "./template/menu/menu.component";
 @NgModule({
   declarations: [AppComponent, MenuComponent],
   entryComponents: [],
-    imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, CurrencyMaskModule],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, CurrencyMaskModule],
+  providers: [{provide: RouteReuseStrategy, useClass: IonicRouteStrategy}],
   bootstrap: [AppComponent],
+  exports: [
+    MenuComponent
+  ]
 })
 export class AppModule {}

@@ -1,3 +1,14 @@
+ion-header {
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+ion-toolbar {
+  --background: linear-gradient(to left, #29313c , #485663);
+  color: white;
+}
+
 ion-progress-bar {
   min-width: 15%;
   --progress-background: #2cc197;

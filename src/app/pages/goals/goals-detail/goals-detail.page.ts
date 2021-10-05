@@ -33,6 +33,12 @@ export class GoalsDetailPage implements OnInit {
       id: this.id,
       current_value: this.currentValue + this.newValue.value
     };
+    const newAccount = this.account;
+    newAccount.value -= this.newValue.value;
+    this.accountService.update(newAccount).subscribe((response) => {
+      console.log(response);
+    });
+
     this.goalService.update(goal).subscribe((response) => {
       this.modalController.dismiss();
     });
