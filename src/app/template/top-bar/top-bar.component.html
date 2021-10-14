@@ -4,7 +4,7 @@
     <ion-title>R$ {{ this.account?.value }}</ion-title>
   </div>
 
-  <ion-card>
+  <ion-card *ngIf="goal; else noneGoal">
     <ion-card-content>
       <ion-card-title>{{ this.goal?.description }}</ion-card-title>
       <ion-progress-bar value="{{ this.goal?.current_value / this.goal?.value}}"></ion-progress-bar>
@@ -13,5 +13,17 @@
       </span>
     </ion-card-content>
   </ion-card>
+
+  <ng-template #noneGoal>
+    <ion-card  routerLink="/create-goal">
+      <ion-card-content>
+        <ion-card-title>Você não possui metas ativas</ion-card-title>
+        <ion-progress-bar value="0"></ion-progress-bar>
+        <span>
+          <h3>Clique no card para criar uma nova meta</h3>
+      </span>
+      </ion-card-content>
+    </ion-card>
+  </ng-template>
 </div>
 

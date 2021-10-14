@@ -1,6 +1,7 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
-import {Router} from "@angular/router";
-import {TransactionService} from "../../../services/transactions/transaction.service";
+import {Router} from '@angular/router';
+import {TransactionService} from '../../../services/transactions/transaction.service';
+import {Location} from "@angular/common";
 
 @Component({
   selector: 'app-create-expense',
@@ -18,7 +19,9 @@ export class CreateExpensePage implements OnInit {
     status: false
   };
 
-  constructor(private transactionService: TransactionService, private router: Router) {
+  constructor(private transactionService: TransactionService,
+              private router: Router,
+              private location: Location) {
     this.isChecked = true;
   }
 
@@ -36,5 +39,9 @@ export class CreateExpensePage implements OnInit {
     this.transactionService.create(this.expense).subscribe(() => {
       this.router.navigate(['/home']);
     });
+  }
+
+  back() {
+    this.location.back();
   }
 }

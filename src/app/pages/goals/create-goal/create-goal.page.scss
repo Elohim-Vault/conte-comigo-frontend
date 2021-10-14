@@ -40,7 +40,6 @@ ion-item{
   margin-right: 10px;
 }
 
-
 ion-content {
   --background: #f5f9fc ;
   display: flex;
@@ -63,11 +62,15 @@ input:focus {
 }
 
 
-ion-button {
+#submit-button {
   margin-top: 30px;
   width: 90%;
   height: 105%;
   --background: #2cc197;
+}
+
+#back-button {
+  font-size: 1rem;
 }
 
 ion-col {

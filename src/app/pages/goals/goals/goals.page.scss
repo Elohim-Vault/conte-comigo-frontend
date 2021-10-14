@@ -50,3 +50,22 @@ ion-card span {
   right: 5%;
 }
 
+#nullMessage {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  text-align: center;
+  ion-title {
+    font-size: 1rem;
+  }
+  ion-button {
+    margin-top: 10px
+  }
+}
+
+ion-spinner {
+  position: relative;
+  transform: scale(3);
+  left: 50%;
+  top: 50%
+}

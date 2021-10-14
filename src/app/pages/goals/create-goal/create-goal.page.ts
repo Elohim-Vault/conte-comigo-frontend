@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {GoalService} from "../../../services/goals/goal.service";
-import {Router} from "@angular/router";
+import {GoalService} from '../../../services/goals/goal.service';
+import {Router} from '@angular/router';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-create-goal',
@@ -17,14 +18,18 @@ export class CreateGoalPage implements OnInit {
   };
 
 
-  constructor(private goalService: GoalService, private router: Router) { }
+  constructor(private goalService: GoalService, private router: Router, private location: Location) { }
 
   ngOnInit() {
   }
 
-  async create() {
+  create() {
     this.goalService.create(this.goal).subscribe(() => {
-      this.router.navigate(['/home']);
+      this.router.navigateByUrl('/goals');
     });
+  }
+
+  back() {
+    this.location.back();
   }
 }

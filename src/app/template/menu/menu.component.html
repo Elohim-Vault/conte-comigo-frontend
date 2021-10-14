@@ -1,18 +1,18 @@
 <ion-tabs>
   <ion-tab-bar slot="bottom">
-    <ion-tab-button href="/home">
+    <ion-tab-button routerLink="/home">
       <ion-icon name="home-outline"></ion-icon>
       <ion-label>Ínicio</ion-label>
     </ion-tab-button>
 
-    <ion-tab-button href="/transactions">
+    <ion-tab-button routerLink="/transactions">
       <ion-icon name="stats-chart-outline"></ion-icon>
       <ion-label>Transações</ion-label>
     </ion-tab-button>
 
     <ion-tab-button id="central"></ion-tab-button>
 
-    <ion-tab-button href="\goals">
+    <ion-tab-button routerLink="/goals">
       <ion-icon name="trending-up-outline"></ion-icon>
       <ion-label>Metas</ion-label>
     </ion-tab-button>
@@ -30,8 +30,8 @@
     <ion-icon name="add"></ion-icon>
   </ion-fab-button>
   <ion-fab-list side="top">
-    <ion-fab-button type="button" color="dark" href="/create-gain"><ion-icon name="trending-up-outline"></ion-icon></ion-fab-button>
-    <ion-fab-button type="button" color="dark" href="/create-expense"><ion-icon name="trending-down-outline"></ion-icon></ion-fab-button>
-    <ion-fab-button type="button" color="dark" href="/create-goal"><ion-icon name="bar-chart-outline"></ion-icon></ion-fab-button>
+    <ion-fab-button type="button" color="dark" routerLink="/create-gain"><ion-icon name="trending-up-outline"></ion-icon></ion-fab-button>
+    <ion-fab-button type="button" color="dark" routerLink="/create-expense"><ion-icon name="trending-down-outline"></ion-icon></ion-fab-button>
+    <ion-fab-button type="button" color="dark" routerLink="/create-goal"><ion-icon name="bar-chart-outline"></ion-icon></ion-fab-button>
   </ion-fab-list>
 </ion-fab>

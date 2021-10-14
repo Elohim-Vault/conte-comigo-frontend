@@ -11,9 +11,7 @@ import {ModalController} from "@ionic/angular";
   styleUrls: ['./goals-detail.page.scss'],
 })
 export class GoalsDetailPage implements OnInit {
-  @Input() currentValue: number;
-  @Input() value: number;
-  @Input() id: number;
+  @Input() goalInput: Array<any>;
   public account;
   public newValue;
   constructor(private accountService: AccountService,
@@ -25,22 +23,18 @@ export class GoalsDetailPage implements OnInit {
     this.accountService.userAccount().subscribe((response) => {
       this.account = response;
       this.newValue = new FormControl(0, [Validators.max(100)]);
+      console.log(this.goalInput);
     });
   }
 
-  create() {
-    const goal = {
-      id: this.id,
-      current_value: this.currentValue + this.newValue.value
-    };
-    const newAccount = this.account;
+  updateValue() {
+    const goal = Object.assign({}, this.goalInput);
+    goal['current_value'] += this.newValue.value;
+    const newAccount = Object.assign({}, this.account);
     newAccount.value -= this.newValue.value;
-    this.accountService.update(newAccount).subscribe((response) => {
-      console.log(response);
-    });
-
+    this.accountService.update(newAccount).subscribe();
     this.goalService.update(goal).subscribe((response) => {
-      this.modalController.dismiss();
+      this.modalController.dismiss(goal);
     });
   }
 }

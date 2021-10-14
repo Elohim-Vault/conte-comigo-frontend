@@ -7,17 +7,17 @@
 <ion-content>
     <div id="goal">
       <span>
-        <h3>R$ {{ this.currentValue + this.newValue.value }} de R$ {{ this.value }} </h3>
-        <h3 id="price">{{ (this.currentValue + this.newValue.value) * 100 / this.value}}% completo</h3>
+        <h3>R$ {{ (this.goalInput.current_value + this.newValue.value).toFixed(2) }} de R$ {{ this.value }} </h3>
+        <h3 id="price">{{ ((this.goalInput.current_value + this.newValue.value) * 100 / this.goalInput.value).toFixed(0)}}% completo</h3>
       </span>
-      <ion-progress-bar value="{{ (this.currentValue + this.newValue.value) / 100}}"></ion-progress-bar>
+      <ion-progress-bar value="{{ (this.goalInput.current_value + this.newValue.value) / this.goalInput.value}}"></ion-progress-bar>
     </div>
 
     <ion-item lines="none">
       <ion-label position="stacked">Valor</ion-label>
       <input currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',', align: 'left' }" [formControl]="newValue" max="1000">
     </ion-item>
-        <ion-button type="submit" (click)="create()">Cadastrar</ion-button>
+        <ion-button type="submit" (click)="updateValue()">Cadastrar</ion-button>
 
 </ion-content>
 

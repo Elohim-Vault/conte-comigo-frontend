@@ -26,9 +26,15 @@
       Balanço mensal
     </ion-card-header>
     <ion-card-content>
-      <canvas #transactionsChartCanvas style="position: relative;"></canvas>
+      <canvas #transactionsChartCanvas></canvas>
     </ion-card-content>
   </ion-card>
+
+  <div id="nullMessage" *ngIf="!(isPending | async) && transactionsData.length === 0" >
+    <h3>Você não fez nenhuma transação neste período</h3>
+  </div>
+
+  <ion-spinner *ngIf="isPending | async" name="dots"></ion-spinner>
 
   <ion-list>
       <ion-item *ngFor="let transaction of transactionsData">
@@ -50,5 +56,6 @@
     <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Carregando mais transações">
     </ion-infinite-scroll-content>
   </ion-infinite-scroll>
+
 
 </ion-content>

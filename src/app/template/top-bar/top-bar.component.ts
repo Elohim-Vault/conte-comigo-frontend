@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {AccountService} from '../../services/account/account.service';
 import {GoalService} from "../../services/goals/goal.service";
 
+
 @Component({
   selector: 'app-top-bar',
   templateUrl: './top-bar.component.html',

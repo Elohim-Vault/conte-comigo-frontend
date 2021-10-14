@@ -3,6 +3,8 @@ import Chart from 'chart.js/auto';
 import {TransactionService} from '../../services/transactions/transaction.service';
 import {AccountService} from '../../services/account/account.service';
 import {IonInfiniteScroll} from '@ionic/angular';
+import {Observable} from "rxjs";
+import {LoadingControllerService} from "../../services/loading/loading-controller-service";
 
 @Component({
   selector: 'app-transactions',
@@ -13,23 +15,33 @@ export class TransactionsPage implements OnInit {
   @ViewChild(IonInfiniteScroll) public infinite: IonInfiniteScroll;
   @ViewChild('transactionsChartCanvas') private transactionCanvas: ElementRef;
   transactionsData: Array<any> = [];
-  monthName = [
+  public isPending: Observable<boolean>;
+  public monthName = [
     'janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho',
     'agosto', 'setembro', 'outubro', 'novembro', 'dezembro'
   ];
-  pageNumber = 1;
-  month: string;
-  transactionChart;
-  constructor(private transactionService: TransactionService, private accountService: AccountService) {}
+  public month: string;
+  public transactionChart;
+  private pageNumber = 1;
+
+  constructor(private transactionService: TransactionService,
+              private accountService: AccountService,
+              private loadingController: LoadingControllerService
+  ) {}
 
   ngOnInit() {
     this.infiniteTransaction();
+    this.isPending = this.loadingController.isPending;
     const monthNumber = new Date().getMonth() + 1;
     this.month = `${monthNumber}`;
   }
 
   ionViewDidEnter() {
     this.showTransactionChart(this.month);
+  }
+
+  ionViewDidLeave() {
+    this.transactionChart.destroy();
   }
 
   alterMonth(month) {
@@ -44,6 +56,7 @@ export class TransactionsPage implements OnInit {
   infiniteTransaction(isFirstLoad = false, event?) {
     this.transactionService.get(7, this.pageNumber, this.month)
       .subscribe((response: any) => {
+        this.loadingController.pending.next(false);
         response.data.forEach((item) => {
           this.transactionsData.push(item);
         });
@@ -88,6 +101,4 @@ export class TransactionsPage implements OnInit {
       });
     });
   }
-
-
 }

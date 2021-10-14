@@ -1,9 +1,10 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {AlertController, IonInfiniteScroll} from "@ionic/angular";
+import {AlertController, IonInfiniteScroll, LoadingController} from "@ionic/angular";
 import {GoalService} from "../../../services/goals/goal.service";
 import { ModalController } from '@ionic/angular';
 import {GoalsDetailPage} from "../goals-detail/goals-detail.page";
-import {Router} from "@angular/router";
+import {BehaviorSubject, Observable} from 'rxjs';
+import {LoadingControllerService} from "../../../services/loading/loading-controller-service";
 
 @Component({
   selector: 'app-goals',
@@ -12,15 +13,19 @@ import {Router} from "@angular/router";
 })
 export class GoalsPage implements OnInit {
   @ViewChild(IonInfiniteScroll) public infinite: IonInfiniteScroll;
-  goalData: Array<any> = [];
-  pageNumber = 0;
+  public goalData: Array<any> = [];
+  public pageNumber = 0;
+
+  public isPending: Observable<boolean>;
   constructor(private goalService: GoalService,
               private modalController: ModalController,
-              private router: Router,
-              private alertController: AlertController
+              private alertController: AlertController,
+              private loadingController: LoadingControllerService
   ) { }
 
+
   ngOnInit() {
+    this.isPending = this.loadingController.isPending;
     this.infiniteGoal();
   }
 
@@ -29,15 +34,18 @@ export class GoalsPage implements OnInit {
       component: GoalsDetailPage,
       cssClass: 'goals-detail',
       componentProps: {
-        id: goal.id,
-        currentValue: goal.current_value,
-        value: goal.value
+        goalInput: goal
       }
+    });
+
+    modal.onDidDismiss().then(data => {
+      this.goalData = this.goalData.filter(goal => goal.id !== data.data.id);
+      this.goalData.push(data.data);
     });
     return await modal.present();
   }
 
-  async presentAlert(message) {
+  async presentAlert(message, goal) {
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
       header: 'Atenção',
@@ -47,6 +55,10 @@ export class GoalsPage implements OnInit {
         {
           text: 'Sim',
           handler: () => {
+            goal.done = 1;
+            this.goalService.update(goal).subscribe((response) => {
+              this.goalData = this.goalData.filter(data => data.id !== goal.id);
+            });
           }
         },
         {
@@ -64,6 +76,7 @@ export class GoalsPage implements OnInit {
   infiniteGoal(isFirstLoad = false, event?) {
     this.goalService.get(7)
       .subscribe((response: any) => {
+        this.loadingController.pending.next(false);
         response.data.forEach((item) => {
           this.goalData.push(item);
         });
@@ -83,14 +96,14 @@ export class GoalsPage implements OnInit {
     this.infiniteGoal(true, event);
   }
 
-  taskDone(goal) {
+  confirmTaskDone(goal) {
     if (goal.value === goal.current_value)
     {
-      this.presentAlert('Você tem certeza que deseja marcar essa meta como concluida?');
+      this.presentAlert('Você tem certeza que deseja marcar essa meta como concluida?', goal);
     }
     else
     {
-      this.presentAlert('Essa meta não foi cumprida. Você tem certeza que deseja marcar essa meta como concluida?');
+      this.presentAlert('Essa meta não foi cumprida. Você tem certeza que deseja marcar essa meta como concluida?', goal);
     }
   }
 }

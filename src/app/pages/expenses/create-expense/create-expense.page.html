@@ -2,7 +2,9 @@
   <ion-toolbar>
     <ion-title>Nova despesa</ion-title>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/home"></ion-back-button>
+      <ion-button (click)="back()" clear icon-only id="back-button">
+        <ion-icon name="arrow-back-outline"></ion-icon>
+      </ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -21,7 +23,7 @@
 
   <ion-item lines="none" >
     <ion-label position="stacked">Data de recorrência</ion-label>
-    <ion-datetime id="recurrenceDate" displayFormat="DD/MM/YY" [(ngModel)]="expense.recurrence_date" placeholder="Selecione uma data"></ion-datetime>
+    <ion-datetime id="recurrenceDate" displayFormat="DD/MM" [(ngModel)]="expense.recurrence_date" placeholder="Selecione uma data"></ion-datetime>
   </ion-item>
 
   <ion-item id="checkRecurrence" lines="none">
@@ -31,7 +33,7 @@
 
   <ion-row>
     <ion-col>
-      <ion-button type="submit" (click)="create()">Cadastrar</ion-button>
+      <ion-button (click)="create()" type="submit" id="submit-button">Cadastrar</ion-button>
     </ion-col>
   </ion-row>
 </ion-content>

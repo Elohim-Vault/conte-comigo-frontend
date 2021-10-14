@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import {AlertController, ModalController} from '@ionic/angular';
 import { AuthService } from 'src/app/services/auth/auth.service';
-import {ConfirmLogoutComponent} from "../confirm-logout/confirm-logout.component";
+
 
 @Component({
   selector: 'app-menu',
@@ -23,6 +23,7 @@ export class MenuComponent implements OnInit {
   async presentAlert() {
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
+      header: 'Logout',
       message: 'Você tem certeza que deseja sair?',
       buttons: [
         {

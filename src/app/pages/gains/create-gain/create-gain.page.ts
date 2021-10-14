@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {Router} from "@angular/router";
-import {TransactionService} from "../../../services/transactions/transaction.service";
+import {Router} from '@angular/router';
+import {TransactionService} from '../../../services/transactions/transaction.service';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-create-gain',
@@ -16,7 +17,9 @@ export class CreateGainPage implements OnInit {
     value: 0,
     recurrence_date: '',
   };
-  constructor(private transactionService: TransactionService, private router: Router) {
+  constructor(private transactionService: TransactionService,
+              private router: Router,
+              private location: Location) {
     this.isChecked = true;
   }
 
@@ -32,5 +35,9 @@ export class CreateGainPage implements OnInit {
   changeRecurrence() {
     document.getElementById('recurrenceDate').setAttribute('disabled', String(this.isChecked));
     this.gain.recurrence_date = '';
+  }
+
+  back() {
+    this.location.back();
   }
 }

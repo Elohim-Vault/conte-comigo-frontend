@@ -4,24 +4,32 @@
   </ion-toolbar>
 </ion-header>
 
+
 <ion-content>
+  <div id="nullMessage" *ngIf="!(isPending | async) && goalData.length === 0" >
+    <ion-title>Você ainda não possui nenhuma meta</ion-title>
+    <ion-button routerLink="/create-goal">Crie uma meta aqui</ion-button>
+  </div>
+
+  <ion-spinner *ngIf="isPending | async" name="dots"></ion-spinner>
+
   <ion-list>
     <ion-item-sliding *ngFor="let goal of goalData">
       <ion-item>
         <ion-card (click)="presentModal(this.goal)">
           <ion-card-content>
             <ion-card-title>{{ this.goal.description }}</ion-card-title>
-            <ion-progress-bar value="{{ this.goal.current_value / this.goal.value}}"></ion-progress-bar>
+            <ion-progress-bar value="{{ (this.goal.current_value / this.goal.value).toFixed(2) }}"></ion-progress-bar>
             <span>
               <h3>R$ {{ this.goal.current_value }} de R$ {{ this.goal.value }} </h3>
-              <h3 id="price">{{ (this.goal.current_value * 100) / this.goal.value}}% completo</h3>
+              <h3 id="price">{{ ((this.goal.current_value * 100) / this.goal.value).toFixed(0) }}% completo</h3>
             </span>
           </ion-card-content>
         </ion-card>
       </ion-item>
 
       <ion-item-options side="end">
-        <ion-item-option (click)="taskDone(goal)">Concluído</ion-item-option>
+        <ion-item-option (click)="confirmTaskDone(goal)">Concluído</ion-item-option>
       </ion-item-options>
     </ion-item-sliding>
   </ion-list>
