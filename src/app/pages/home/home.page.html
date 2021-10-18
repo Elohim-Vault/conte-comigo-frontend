@@ -1,5 +1,32 @@
 <ion-content [fullscreen]="true">
-  <app-top-bar></app-top-bar>
+  <div id="top-bar">
+    <div id="header">
+      <ion-label>Saldo na sua conta</ion-label>
+      <ion-title>R$ {{ this.account?.value }}</ion-title>
+    </div>
+
+    <ion-card *ngIf="goal; else noneGoal">
+      <ion-card-content>
+        <ion-card-title>{{ this.goal?.description }}</ion-card-title>
+        <ion-progress-bar value="{{ this.goal?.current_value / this.goal?.value}}"></ion-progress-bar>
+        <span>
+          <h3>R$ {{ this.goal?.current_value }} de R$ {{ this.goal?.value }} </h3> <h3 id="price">{{ (this.goal?.current_value * 100) / this.goal?.value}}% completo</h3>
+      </span>
+      </ion-card-content>
+    </ion-card>
+
+    <ng-template #noneGoal>
+      <ion-card  routerLink="/create-goal">
+        <ion-card-content>
+          <ion-card-title>Você não possui metas ativas</ion-card-title>
+          <ion-progress-bar value="0"></ion-progress-bar>
+          <span>
+          <h3>Clique no card para criar uma nova meta</h3>
+      </span>
+        </ion-card-content>
+      </ion-card>
+    </ng-template>
+  </div>
 
   <div id="container">
     <div id="transactions">

@@ -27,9 +27,7 @@ export class LoginPage implements OnInit {
               this.router.navigateByUrl('/home');
           });
         });
-
         this.auth.setNameLocal(response['user'].name);
-
       },
       error => console.log(error)
     );

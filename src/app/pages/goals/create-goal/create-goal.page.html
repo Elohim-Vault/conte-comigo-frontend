@@ -28,7 +28,8 @@
 
   <ion-row>
     <ion-col>
-      <ion-button id="submit-button" type="submit" (click)="create()">Cadastrar</ion-button>
+      <ion-button (click)="create()" *ngIf="!(isPending | async)" id="submit-button" type="submit">Cadastrar</ion-button>
+      <ion-spinner name="dots" *ngIf="isPending | async"></ion-spinner>
     </ion-col>
   </ion-row>
 </ion-content>

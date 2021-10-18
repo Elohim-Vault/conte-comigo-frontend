@@ -30,13 +30,16 @@ export class TransactionsPage implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.infiniteTransaction();
     this.isPending = this.loadingController.isPending;
     const monthNumber = new Date().getMonth() + 1;
     this.month = `${monthNumber}`;
   }
 
   ionViewDidEnter() {
+    this.transactionsData = [];
+    this.pageNumber = 1;
+    this.infinite.disabled = false;
+    this.infiniteTransaction();
     this.showTransactionChart(this.month);
   }
 

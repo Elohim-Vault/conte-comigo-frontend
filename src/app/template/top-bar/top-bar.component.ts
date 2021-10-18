@@ -15,7 +15,7 @@ export class TopBarComponent implements OnInit {
   constructor(private goalService: GoalService, private accountService: AccountService) {}
 
   ngOnInit() {
-    this.accountService.userAccount().subscribe(response => {
+    this.accountService.userAccount().subscribe((response) => {
       this.account = response;
       console.log(this.account);
     });
@@ -26,5 +26,15 @@ export class TopBarComponent implements OnInit {
     });
   }
 
+  ionViewDidEnter() {
+    this.accountService.userAccount().subscribe((response) => {
+      this.account = response;
+      console.log(this.account);
+    });
 
+    this.goalService.get(1).subscribe((response) => {
+      response = response['data'];
+      this.goal = response[Object.keys(response).length - 1];
+    });
+  }
 }

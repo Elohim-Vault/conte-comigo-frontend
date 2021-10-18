@@ -5,8 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { HomePage } from './home.page';
 
 import { HomePageRoutingModule } from './home-routing.module';
-import {TopBarComponent} from "../../template/top-bar/top-bar.component";
-import {SideBarComponent} from "../../template/side-bar/side-bar.component";
+
 
 
 
@@ -17,6 +16,6 @@ import {SideBarComponent} from "../../template/side-bar/side-bar.component";
         IonicModule,
         HomePageRoutingModule,
     ],
-  declarations: [HomePage, TopBarComponent, SideBarComponent]
+  declarations: [HomePage]
 })
 export class HomePageModule {}
